@@ -17,8 +17,11 @@ number_list = soup.find('p', attrs={'align':'center'}).find('span').text
 
 number = re.findall(r'\w+',number_list)[0]
 
+updatetd_day = soup.find('p', attrs={'id':'tmp_update'}).text
 
-file = open('info.json', 'r')
+contents = updatetd_day + '\n' + number
+
+file = open('LINEinfo.json', 'r')
 info = json.load(file)
 
 CHANNEL_ACCESS_TOKEN = info['CHANNEL_ACCESS_TOKEN']
@@ -26,7 +29,7 @@ line_bot_api = LineBotApi(CHANNEL_ACCESS_TOKEN)
 
 def main():
     USER_ID = info['USER_ID']
-    messages = TextMessage(text=number)
+    messages = TextMessage(text=contents)
     line_bot_api.push_message(USER_ID, messages=messages)
 
 if __name__ == '__main__':
