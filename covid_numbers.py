@@ -19,7 +19,7 @@ number = re.findall(r'\w+',number_list)[0]
 
 updatetd_day = soup.find('p', attrs={'id':'tmp_update'}).text.lstrip('更新日：')
 
-contents = f'{updatetd_day}の感染者数は{number}です。'
+contents = f'{updatetd_day}の感染者数は\n{number}です'
 
 file = open('LINEinfo.json', 'r')
 info = json.load(file)
