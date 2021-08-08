@@ -9,9 +9,9 @@ name: covid_number
 env:
           TZ: 'Asia/Tokyo'
 on:
-  push:
-#  schedule:
-#   - cron: '24 12 * * *'
+#  push:
+  schedule:
+   - cron: '29 12 * * *'
 
 jobs:
   build:
