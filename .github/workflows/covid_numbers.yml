@@ -10,7 +10,7 @@ name: covid_number
 on:
 #  push:
   schedule:
-   - cron: '35 13 * * *'
+   - cron: '0 13 * * *'
 
 jobs:
   build:
