@@ -6,12 +6,11 @@ name: covid_number
 # UTC の 02:00 は JST だと 11:00 。
 # 曜日指定には [0, 6] の整数を使います。 0 が日曜日、 6 が土曜日です。
 # 実はgithub actionsのcronの時刻はUTCなので、日本時間に合わせるために日本時刻から9時間マイナスで設定する必要があります。
-env:
-          TZ: 'Asia/Tokyo'
+
 on:
 #  push:
   schedule:
-   - cron: '29 12 * * *'
+   - cron: '35 13 * * *'
 
 jobs:
   build:
@@ -34,6 +33,8 @@ jobs:
           pip install line-bot-sdk
           pip install beautifulsoup4
       - name: Run script
+        env:
+          TZ: 'Asia/Tokyo'
         run: |
           # main.pyの実行
           python covid_numbers.py
