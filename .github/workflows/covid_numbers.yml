@@ -8,7 +8,7 @@ name: test_chatbot
 # 実はgithub actionsのcronの時刻はUTCなので、日本時間に合わせるために日本時刻から9時間マイナスで設定する必要があります。
 on:
   schedule:
-    - cron: '16 21 * * *'
+    - cron: '24 12 * * *'
 
 jobs:
   build:
@@ -31,6 +31,8 @@ jobs:
           pip install line-bot-sdk
           pip install beautifulsoup4
       - name: Run script
+        env:
+          TZ: 'Asia/Tokyo'
         run: |
           # main.pyの実行
           python covid_numbers.py
