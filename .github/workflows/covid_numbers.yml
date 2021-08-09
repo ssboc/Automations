@@ -9,7 +9,7 @@ name: covid_number
 
 on:
   schedule:
-   - cron: '0 23 * * *'
+   - cron: '2 23 * * *'
 
 jobs:
   build:
