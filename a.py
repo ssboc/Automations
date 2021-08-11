@@ -1,9 +1,12 @@
 import requests
 from bs4 import BeautifulSoup
 import re
+import pickle
+import os
 from linebot import LineBotApi
 from linebot.models import TextMessage
 import json
+
 
 url = 'https://www.city.sapporo.jp/hokenjo/f1kansen/2019n-covhassei.html'
 html = requests.get(url)
@@ -16,9 +19,10 @@ number_list = soup.find('p', attrs={'align':'center'}).find('span').text
 
 number = re.findall(r'\w+',number_list)[0]
 
-updatetd_day = soup.find('p', attrs={'id':'tmp_update'}).text.lstrip('更新日：')
+updated_day = soup.find('p', attrs={'id':'tmp_update'}).text.lstrip('更新日2021年：')
 
-contents = f'{updatetd_day}の感染者数は\n{number}です'
+contents = f'{updated_day}の感染者数は{number}です。'
+
 
 file = open('LINEinfo.json', 'r')
 info = json.load(file)
@@ -33,3 +37,24 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+with open('numbers.binryfile', 'rb') as f:
+    numbers = pickle.load(f)
+with open('updated_days.binryfile', 'rb') as f:
+    updated_days = pickle.load(f)
+
+numbers.append(number)
+updated_days.append(updated_day)
+
+numbers.append(number)
+updated_days.append(updated_day)
+
+
+os.remove(r'C:/Users/ssboc/Desktop/works/Automations/numbers.binryfile')
+os.remove(r'C:/Users/ssboc/Desktop/works/Automations/updated_days.binryfile')
+
+with open('numbers.binryfile', 'wb') as f:
+    pickle.dump(numbers, f)
+with open('updated_days.binryfile', 'wb') as f:
+    pickle.dump(updated_days, f)
