@@ -1,5 +1,5 @@
 # ワークフロー名
-name: covid_number
+name: コロナ通知
 
 # 発火タイミング
 # 日本時刻の朝7時に定期処理(分 時 日 月 曜日)
@@ -8,8 +8,9 @@ name: covid_number
 # 実はgithub actionsのcronの時刻はUTCなので、日本時間に合わせるために日本時刻から9時間マイナスで設定する必要があります。
 
 on:
-  schedule:
-   - cron: '2 23 * * *'
+  push:
+#  schedule:
+#   - cron: ' 23 * * *'
 
 jobs:
   build:
@@ -31,7 +32,8 @@ jobs:
           # 必要なパッケージインストール
           pip install line-bot-sdk
           pip install beautifulsoup4
+          pip install requests
       - name: Run script
         run: |
           # main.pyの実行
-          python covid_numbers.py
+          python a.py
