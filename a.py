@@ -50,8 +50,8 @@ numbers.append(number)
 updated_days.append(updated_day)
 
 
-os.remove(r'C:/Users/ssboc/Desktop/works/Automations/numbers.binryfile')
-os.remove(r'C:/Users/ssboc/Desktop/works/Automations/updated_days.binryfile')
+os.remove(r'C:/Users/ssboc/Desktop/works/Auto/numbers.binryfile')
+os.remove(r'C:/Users/ssboc/Desktop/works/Auto/updated_days.binryfile')
 
 with open('numbers.binryfile', 'wb') as f:
     pickle.dump(numbers, f)
