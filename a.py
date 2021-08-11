@@ -35,8 +35,7 @@ def main():
     messages = TextMessage(text=contents)
     line_bot_api.push_message(USER_ID, messages=messages)
 
-if __name__ == '__main__':
-    main()
+
 
 
 with open('numbers.binryfile', 'rb') as f:
@@ -58,3 +57,6 @@ with open('numbers.binryfile', 'wb') as f:
     pickle.dump(numbers, f)
 with open('updated_days.binryfile', 'wb') as f:
     pickle.dump(updated_days, f)
+
+if __name__ == '__main__':
+    main()
