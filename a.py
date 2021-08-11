@@ -38,9 +38,9 @@ def main():
 
 
 
-with open('numbers.binryfile', 'rb') as f:
+with open('numbers.binary', 'rb') as f:
     numbers = pickle.load(f)
-with open('updated_days.binryfile', 'rb') as f:
+with open('updated_days.binary', 'rb') as f:
     updated_days = pickle.load(f)
 
 numbers.append(number)
@@ -50,17 +50,12 @@ numbers.append(number)
 updated_days.append(updated_day)
 
 
-<<<<<<< HEAD
-os.remove(r'C:/Users/ssboc/Desktop/works/Auto/numbers.binryfile')
-os.remove(r'C:/Users/ssboc/Desktop/works/Auto/updated_days.binryfile')
-=======
-os.remove('numbers.binryfile')
-os.remove('updated_days.binryfile')
->>>>>>> origin/master
+os.remove('numbers.binary')
+os.remove('updated_days.binary')
 
-with open('numbers.binryfile', 'wb') as f:
+with open('numbers.binary', 'wb') as f:
     pickle.dump(numbers, f)
-with open('updated_days.binryfile', 'wb') as f:
+with open('updated_days.binary', 'wb') as f:
     pickle.dump(updated_days, f)
 
 if __name__ == '__main__':
