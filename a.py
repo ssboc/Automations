@@ -17,11 +17,11 @@ soup = BeautifulSoup(html.text, 'html.parser')
 
 number_list = soup.find('p', attrs={'align':'center'}).find('span').text
 
-number = re.findall(r'\w+',number_list)[0]
+number = re.findall(r'\w+',number_list)[0].rstrip("人")
 
 updated_day = soup.find('p', attrs={'id':'tmp_update'}).text.lstrip('更新日2021年：')
 
-contents = f'{updated_day}の感染者数は{number}です。'
+contents = f'{updated_day}の感染者数は{number}人です。'
 
 
 file = open('LINEinfo.json', 'r')
@@ -38,9 +38,9 @@ def main():
 
 
 
-with open('numbers.binary', 'rb') as f:
+with open('numbers', 'rb') as f:
     numbers = pickle.load(f)
-with open('updated_days.binary', 'rb') as f:
+with open('updated_days', 'rb') as f:
     updated_days = pickle.load(f)
 
 numbers.append(number)
@@ -50,12 +50,12 @@ numbers.append(number)
 updated_days.append(updated_day)
 
 
-os.remove('numbers.binary')
-os.remove('updated_days.binary')
+os.remove('numbers')
+os.remove('updated_days')
 
-with open('numbers.binary', 'wb') as f:
+with open('numbers', 'wb') as f:
     pickle.dump(numbers, f)
-with open('updated_days.binary', 'wb') as f:
+with open('updated_days', 'wb') as f:
     pickle.dump(updated_days, f)
 
 if __name__ == '__main__':
