@@ -9,7 +9,7 @@ name: コロナ感染者数通知
 
 on:
   schedule:
-   - cron: '0 13 * * *'
+   - cron: '40 12 * * *'
 
 jobs:
   build:
