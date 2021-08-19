@@ -9,7 +9,7 @@ name: コロナ感染者数通知
 
 on:
   schedule:
-   - cron: '20 13 * * *'
+   - cron: '30 12 * * *'
 
 jobs:
   build:
@@ -32,7 +32,6 @@ jobs:
           pip install line-bot-sdk
           pip install beautifulsoup4
           pip install requests
-          pip install matplotlib
       - name: Run script
         run: |
           # main.pyの実行
